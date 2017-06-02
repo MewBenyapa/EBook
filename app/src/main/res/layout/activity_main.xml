@@ -8,15 +8,39 @@
 
 
 
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Book" />
+
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/sort"
+
         android:checkedButton="@+id/radioButton_title"
         android:orientation="horizontal"
         android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+        android:paddingBottom="5dp"
+        android:layout_below="@+id/search">
+
+        <TextView
+            android:id="@+id/sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+
+            android:paddingTop="12dp"
+            android:text="Sort By :" />
 
         <RadioButton
             android:id="@+id/radioButton_title"
@@ -36,7 +60,19 @@
             android:buttonTint="#000000"
             android:text="Public year"
             android:onClick="sortClick"/>
+
     </RadioGroup>
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search"
+        android:layout_toEndOf="@+id/radioGroup"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:text="Button" />
 
     <GridView
         android:id="@+id/grid_view"
@@ -46,17 +82,9 @@
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
         android:gravity="center"
-        android:layout_below="@+id/radioGroup" />
-
-    <TextView
-        android:id="@+id/sort"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:paddingTop="12dp"
-        android:text="Sort By :" />
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true" />
 
     <!--<ListView-->
         <!--android:id="@+id/list_books"-->
