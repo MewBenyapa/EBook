@@ -44,19 +44,19 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
         BookRepository repository = RemoteBookRepository.getInstance();
 
-        bookListView = (GridView) findViewById(R.id.grid_view);
+        bookListView = (GridView) findViewById(R.id.book_grid);
         adapter = createAdapter(new ArrayList<Book>());
         bookListView.setAdapter(adapter);
 
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
-        searchTitleBtn = (Button) findViewById(R.id.button);
-        searchYearBtn = (Button) findViewById(R.id.button);
+        searchTitleBtn = (Button) findViewById(R.id.btn_search_by_title);
+        searchYearBtn = (Button) findViewById(R.id.btn_search_by_year);
 
-        sortTitle = (Button) findViewById(R.id.radioButton_title);
-        sortYear = (Button) findViewById(R.id.radioButton_pub);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        sortTitle = (Button) findViewById(R.id.title);
+        sortYear = (Button) findViewById(R.id.publish);
+        radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
     }
 
     private ArrayAdapter<Book> createAdapter(ArrayList<Book> books) {
