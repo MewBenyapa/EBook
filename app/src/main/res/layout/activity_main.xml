@@ -72,7 +72,8 @@
         android:layout_toEndOf="@+id/radioGroup"
         android:layout_marginLeft="10dp"
         android:layout_weight="1"
-        android:text="Button" />
+        android:text="Button"
+        />
 
     <GridView
         android:id="@+id/grid_view"
