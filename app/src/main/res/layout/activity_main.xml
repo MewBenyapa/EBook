@@ -11,20 +11,24 @@
 
         <EditText
             android:id="@+id/search"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Book" />
+            android:textColor="#ffffff"
+            android:background="#000000"
+            android:hint="Insert your book"
+            android:textColorHint="#c0c0c0c0"
+            />
 
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/sort_radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:checkedButton="@+id/radioButton_title"
+        android:checkedButton="@+id/title"
         android:orientation="horizontal"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -43,7 +47,7 @@
             android:text="Sort By :" />
 
         <RadioButton
-            android:id="@+id/radioButton_title"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,7 +56,7 @@
             android:onClick="sortClick"/>
 
         <RadioButton
-            android:id="@+id/radioButton_pub"
+            android:id="@+id/publish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -65,27 +69,43 @@
 
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_searchbytitle"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/search"
-        android:layout_toEndOf="@+id/radioGroup"
-        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/sort_radioGroup"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:text="Button"
+        android:background="#000000"
+        android:text="Search By Title"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/btn_searchbyyear"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sort_radioGroup"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="#000000"
+        android:layout_toEndOf="@+id/btn_searchbytitle"
+        android:text="Search By Year"
+        android:textColor="#ffffff"
         />
 
     <GridView
-        android:id="@+id/grid_view"
+        android:id="@+id/book_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnWidth="120dp"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
         android:gravity="center"
-        android:layout_below="@+id/radioGroup"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/btn_searchbyyear"/>
 
     <!--<ListView-->
         <!--android:id="@+id/list_books"-->
