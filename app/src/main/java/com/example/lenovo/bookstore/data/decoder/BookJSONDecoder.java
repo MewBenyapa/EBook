@@ -16,7 +16,7 @@ public class BookJSONDecoder {
     public static Book createFromJSONObject(JSONObject o) {
         try {
             Book book = new Book(o.getInt("id"), o.getString("title"),
-                                 o.getDouble("price"), o.getInt("year"));
+                                 o.getDouble("price"), o.getString("year"));
                  book.setImgURL(o.getString("img_url"));
                  return book;
         } catch (JSONException e) {

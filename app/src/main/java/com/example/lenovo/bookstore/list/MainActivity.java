@@ -8,8 +8,10 @@ import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.example.lenovo.bookstore.R;
 import com.example.lenovo.bookstore.data.Book;
@@ -25,13 +27,15 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     BookListPresenter presenter;
     ArrayAdapter<Book> adapter;
-    private ListView bookListView;
+    private GridView bookListView;
 
     EditText text;
-    int id;
+    int btnID;
 
-    RadioButton sortTitle, sortYear;
+    Button sortTitle, sortYear;
     Button searchTitleBtn, searchYearBtn;
+
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +44,19 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
         BookRepository repository = RemoteBookRepository.getInstance();
 
-        bookListView = (ListView) findViewById(R.id.list_books);
+        bookListView = (GridView) findViewById(R.id.grid_view);
         adapter = createAdapter(new ArrayList<Book>());
         bookListView.setAdapter(adapter);
 
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
-        //searchTitleBtn = (Button) findViewById(R.id.searchTitleBtn);
+        searchTitleBtn = (Button) findViewById(R.id.button);
+        searchYearBtn = (Button) findViewById(R.id.button);
+
+        sortTitle = (Button) findViewById(R.id.radioButton_title);
+        sortYear = (Button) findViewById(R.id.radioButton_pub);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
     }
 
     private ArrayAdapter<Book> createAdapter(ArrayList<Book> books) {
@@ -66,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     }
 
     public void search() {
+        btnID = searchTitleBtn.getId();
+
+        text = (EditText) findViewById(R.id.search);
         text.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -75,7 +87,11 @@ public class MainActivity extends AppCompatActivity implements BookListView {
                 if(s.toString().equals("")) {
                     presenter.initialize();
                 } else {
-
+                    if (btnID == searchTitleBtn.getId()) {
+                        searchByTitle(s.toString());
+                    } else if (btnID == searchYearBtn.getId()){
+                        searchByYear(s.toString());
+                    }
                 }
             }
 
@@ -94,10 +110,10 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         updateBook(books);
     }
 
-    public void searchByYear(int year) {
+    public void searchByYear(String year) {
         ArrayList<Book> books = new ArrayList<Book>();
-        for (Book book : presenter.books) {
-            if (book.getYear() == year) {
+        for ( Book book : presenter.books){
+            if ( book.getYear().contains(year)){
                 books.add(book);
             }
         }

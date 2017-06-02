@@ -5,11 +5,11 @@ package com.example.lenovo.bookstore.data;
  */
 
 public class Book {
-    private int id, year;
+    private int id;
     private double price;
-    private String title, imgURL;
+    private String title, imgURL, year;
 
-    public Book(int id, String title, double price, int year) {
+    public Book(int id, String title, double price, String year) {
         this.id = id;
         this.title = title;
         this.price = price;
@@ -33,7 +33,7 @@ public class Book {
         return price;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
