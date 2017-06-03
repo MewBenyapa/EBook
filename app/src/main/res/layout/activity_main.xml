@@ -13,19 +13,21 @@
         android:layout_height="match_parent"
         android:columnWidth="100dp"
         android:numColumns="auto_fit"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:stretchMode="columnWidth"
         android:gravity="center"
+        android:background="#000000"
+        android:textColor="#ffffff"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/sort_radioGroup" />
+        android:layout_below="@+id/sort_radioGroup" />
 
 
     <RadioGroup
         android:id="@+id/sort_radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_above="@+id/search"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/search"
         android:checkedButton="@+id/title"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
@@ -35,6 +37,7 @@
             android:id="@+id/sort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_above="@+id/search"
             android:layout_weight="1"
             android:paddingTop="12dp"
@@ -64,7 +67,7 @@
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:ems="10"
             android:inputType="textPersonName"
             android:textColor="#ffffff"
