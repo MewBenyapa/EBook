@@ -1,5 +1,7 @@
 package com.example.lenovo.bookstore.data.decoder;
 
+import android.util.Log;
+
 import com.example.lenovo.bookstore.data.Book;
 
 import org.json.JSONArray;
@@ -13,34 +15,24 @@ import java.util.ArrayList;
  */
 
 public class BookJSONDecoder {
-    public static Book createFromJSONObject(JSONObject o) {
-        try {
-            Book book = new Book(o.getInt("id"), o.getString("title"),
-                                 o.getDouble("price"), o.getString("year"));
-                 book.setImgURL(o.getString("img_url"));
-                 return book;
-        } catch (JSONException e) {
-            return null;
-        }
-    }
-
     public static ArrayList<Book> createListFromJSONStr(String str) {
         ArrayList<Book> results = new ArrayList<Book>();
-
         try {
             JSONArray jsonArray = new JSONArray(str);
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject bookJson = jsonArray.getJSONObject(i);
-                Book book = createFromJSONObject(bookJson);
-                if (book != null) {
+                Book book = new Book(bookJson.getInt("id"), bookJson.getString("title"),
+                        bookJson.getDouble("price"), bookJson.getString("pub_year"));
+                book.setImgURL(bookJson.getString("img_url"));
+                if (book != null)
                     results.add(book);
-                }
             }
+            return results;
         } catch (JSONException e) {
             return null;
         }
-        return results;
+
     }
 
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.ButtonBarLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         sortTitle = (Button) findViewById(R.id.title);
         sortYear = (Button) findViewById(R.id.publish);
         radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
+
+        search();
     }
 
     private ArrayAdapter<Book> createAdapter(ArrayList<Book> books) {
@@ -143,4 +146,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     public void onClickSortTitle() {
 
     }
+
+//    public void getAllBooks(View view) {
+//        presenter.initialize();
+//    }
+
 }

@@ -1,5 +1,7 @@
 package com.example.lenovo.bookstore.utils;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,8 +20,8 @@ public class UrlFetcher {
     }
 
     public String fetch() {
+        String result = "";
         try {
-            String result = "";
             URLConnection connection = url.openConnection();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()

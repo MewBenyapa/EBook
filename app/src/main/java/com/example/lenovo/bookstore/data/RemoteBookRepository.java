@@ -1,6 +1,7 @@
 package com.example.lenovo.bookstore.data;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.lenovo.bookstore.data.decoder.BookJSONDecoder;
 import com.example.lenovo.bookstore.utils.UrlFetcher;
@@ -64,6 +65,15 @@ public class RemoteBookRepository extends BookRepository {
             return (new UrlFetcher(bookURL)).fetch();
         }
 
-
+        @Override
+        protected void onPostExecute(ArrayList<Book> book) {
+            if(book != null){
+                books.clear();
+                books.addAll(book);
+                setChanged();
+                notifyObservers();
+            }
+            super.onPostExecute(book);
+        }
     }
 }
