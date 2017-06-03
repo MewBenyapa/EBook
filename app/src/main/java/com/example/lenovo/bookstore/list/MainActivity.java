@@ -46,11 +46,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 400681ec4c43db31ffdc34a8e8ddd2899c3062a6
         sortTitle = (Button) findViewById(R.id.title);
         sortYear = (Button) findViewById(R.id.publish);
         radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
