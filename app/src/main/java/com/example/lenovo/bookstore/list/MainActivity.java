@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.lenovo.bookstore.R;
 import com.example.lenovo.bookstore.data.Book;
@@ -46,11 +48,6 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 400681ec4c43db31ffdc34a8e8ddd2899c3062a6
         sortTitle = (Button) findViewById(R.id.title);
         sortYear = (Button) findViewById(R.id.publish);
         radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
@@ -104,16 +101,6 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         updateBook(books);
     }
 
-    public void searchByYear(String year) {
-        ArrayList<Book> books = new ArrayList<Book>();
-        for ( Book book : presenter.books){
-            if ( book.getYear().contains(year)){
-                books.add(book);
-            }
-        }
-        updateBook(books);
-    }
-
     public void sortByTitle(View view) {
         final Collator collator = Collator.getInstance();
         adapter.sort(new Comparator<Book>() {
@@ -134,9 +121,22 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         });
     }
 
+    public void radioSortTitle(View view) {
+        if (((RadioButton) view).isChecked()) {
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            sortByTitle(view);
+        } else {
+            searchText(text.getText().toString());
+        }
+    }
 
-
-    public void radioSort(View view) {
+    public void radioSortYear(View view) {
+        if (((RadioButton) view).isChecked()) {
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            sortByYear(view);
+        } else {
+            searchText(text.getText().toString());
+        }
     }
 
 //    public void getAllBooks(View view) {
