@@ -2,7 +2,6 @@ package com.example.lenovo.bookstore.list;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -10,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.lenovo.bookstore.R;
@@ -19,7 +16,6 @@ import com.example.lenovo.bookstore.data.Book;
 import com.example.lenovo.bookstore.data.BookRepository;
 import com.example.lenovo.bookstore.data.RemoteBookRepository;
 
-import java.lang.reflect.Array;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -31,10 +27,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     private GridView bookListView;
 
     EditText text;
-    int btnID;
 
     Button sortTitle, sortYear;
-    Button searchTitleBtn, searchYearBtn;
 
     RadioGroup radioGroup;
 
@@ -52,8 +46,11 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 400681ec4c43db31ffdc34a8e8ddd2899c3062a6
         sortTitle = (Button) findViewById(R.id.title);
         sortYear = (Button) findViewById(R.id.publish);
         radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
@@ -77,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     }
 
     public void search() {
-        btnID = searchTitleBtn.getId();
 
         text = (EditText) findViewById(R.id.search);
         text.addTextChangedListener(new TextWatcher() {
@@ -89,11 +85,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
                 if(s.toString().equals("")) {
                     presenter.initialize();
                 } else {
-                    if (btnID == searchTitleBtn.getId()) {
-                        searchByTitle(s.toString());
-                    } else if (btnID == searchYearBtn.getId()){
-                        searchByYear(s.toString());
-                    }
+                    searchText(s.toString());
                 }
             }
 
@@ -102,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         });
     }
 
-    public void searchByTitle(String text) {
+    public void searchText(String text) {
         ArrayList<Book> books = new ArrayList<Book>();
         for (Book book : presenter.books) {
             if (book.getTitle().toLowerCase().contains(text.toLowerCase())) {
@@ -147,10 +139,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     public void radioSort(View view) {
     }
 
-
-
 //    public void getAllBooks(View view) {
 //        presenter.initialize();
 //    }
+
 
 }
