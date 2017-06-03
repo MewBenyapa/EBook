@@ -52,8 +52,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
-        searchTitleBtn = (Button) findViewById(R.id.btn_search_by_title);
-        searchYearBtn = (Button) findViewById(R.id.btn_search_by_year);
+
 
         sortTitle = (Button) findViewById(R.id.title);
         sortYear = (Button) findViewById(R.id.publish);
