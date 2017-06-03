@@ -7,7 +7,9 @@
         android:layout_width="120dp"
         android:layout_height="160dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:background="#000000"
+        android:padding="2dp"/>
 
     <TextView
         android:id="@+id/book_name"
@@ -17,6 +19,35 @@
         android:maxLines="2"
         android:minLines="1"
         android:text="Book name"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_alignStart="@+id/img_book"
+        android:layout_alignEnd="@+id/img_book"
+        android:paddingBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/book_pub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/book_name"
+        android:maxLines="2"
+        android:minLines="1"
+        android:text="Publish year"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_alignStart="@+id/img_book"
+        android:layout_alignEnd="@+id/img_book"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/book_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/book_pub"
+        android:maxLines="2"
+        android:minLines="1"
+        android:text="Price"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
