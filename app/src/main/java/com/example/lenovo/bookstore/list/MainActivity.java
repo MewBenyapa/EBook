@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     }
 
+    public void radioSort(View view) {
+    }
+
 //    public void getAllBooks(View view) {
 //        presenter.initialize();
 //    }

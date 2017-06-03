@@ -18,7 +18,7 @@
             android:inputType="textPersonName"
             android:textColor="#ffffff"
             android:background="#000000"
-            android:hint="Insert your book"
+            android:hint="@string/placeholder"
             android:textColorHint="#c0c0c0c0"
             />
 
@@ -52,8 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="#000000"
-            android:text="Titles"
-            android:onClick="sortClick"/>
+            android:text="@string/radio_title"
+            android:onClick="radioSort"/>
 
         <RadioButton
             android:id="@+id/publish"
@@ -62,8 +62,8 @@
             android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:buttonTint="#000000"
-            android:text="Public year"
-            android:onClick="sortClick"/>
+            android:text="@string/radio_pub"
+            android:onClick="radioSort"/>
 
     </RadioGroup>
 
@@ -77,8 +77,9 @@
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:background="#000000"
-        android:text="Search By Title"
+        android:text="@string/search_title"
         android:textColor="#ffffff"
+        android:onClick="sortByTitle"
         />
 
     <Button
@@ -90,11 +91,11 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
-
         android:background="#000000"
         android:layout_toEndOf="@+id/btn_search_by_title"
-        android:text="Search By Year"
+        android:text="@string/search_year"
         android:textColor="#ffffff"
+        android:onClick="sortByYear"
         />
 
     <GridView

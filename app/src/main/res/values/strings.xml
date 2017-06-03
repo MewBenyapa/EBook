@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Book Store</string>
+    <string name="placeholder">Enter your book</string>
+    <string name="radio_pub">Publish year</string>
+    <string name="radio_title">Title</string>
+    <string name="search_year">Search by Publish Year</string>
+    <string name="search_title">Search by Title</string>
 </resources>
