@@ -7,20 +7,17 @@
     tools:context="com.example.lenovo.bookstore.list.MainActivity">
 
 
-
-
-        <EditText
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentTop="true"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#ffffff"
-            android:background="#000000"
-            android:hint="@string/placeholder"
-            android:textColorHint="#c0c0c0c0"
-            />
+    <GridView
+        android:id="@+id/book_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="100dp"
+        android:numColumns="auto_fit"
+        android:layout_alignParentTop="true"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/sort_radioGroup" />
 
 
     <RadioGroup
@@ -28,19 +25,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_above="@+id/search"
         android:checkedButton="@+id/title"
         android:orientation="horizontal"
-        android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:layout_below="@+id/search">
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/sort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="12dp"
+            android:layout_above="@+id/search"
             android:layout_weight="1"
             android:paddingTop="12dp"
             android:text="Sort By :" />
@@ -51,22 +46,34 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="#000000"
-            android:text="@string/radio_title"
-            android:onClick="radioSort"/>
+            android:onClick="radioSort"
+            android:text="@string/radio_title" />
 
         <RadioButton
             android:id="@+id/publish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:buttonTint="#000000"
-            android:text="@string/radio_pub"
-            android:onClick="radioSort"/>
+            android:onClick="radioSort"
+            android:text="@string/radio_pub" />
 
     </RadioGroup>
 
+    <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="#ffffff"
+            android:background="#000000"
+            android:hint="@string/placeholder"
+            android:textColorHint="#c0c0c0c0"
+            />
 
+<<<<<<< HEAD
     <Button
         android:id="@+id/btn_search_by_title"
         android:layout_width="180dp"
@@ -111,6 +118,8 @@
         android:gravity="center"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/btn_search_by_year"/>
+=======
+>>>>>>> 400681ec4c43db31ffdc34a8e8ddd2899c3062a6
 
     <!--<ListView-->
         <!--android:id="@+id/list_books"-->
