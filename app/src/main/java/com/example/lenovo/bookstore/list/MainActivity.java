@@ -99,7 +99,17 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         updateBook(books);
     }
 
-    public void sortByTitle() {
+    public void searchByYear(String year) {
+        ArrayList<Book> books = new ArrayList<Book>();
+        for ( Book book : presenter.books){
+            if ( book.getYear().contains(year)){
+                books.add(book);
+            }
+        }
+        updateBook(books);
+    }
+
+    public void sortByTitle(View view) {
         final Collator collator = Collator.getInstance();
         adapter.sort(new Comparator<Book>() {
             @Override
@@ -109,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         });
     }
 
-    public void sortByYear() {
+    public void sortByYear(View view) {
         final Collator collator = Collator.getInstance();
         adapter.sort(new Comparator<Book>() {
             @Override
@@ -119,15 +129,14 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         });
     }
 
-    public void onClickSortTitle() {
 
-    }
 
     public void radioSort(View view) {
     }
 
-    public void getAllBooks(View view) {
-        presenter.initialize();
-    }
+//    public void getAllBooks(View view) {
+//        presenter.initialize();
+//    }
+
 
 }

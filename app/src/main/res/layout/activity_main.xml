@@ -42,7 +42,6 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="12dp"
             android:layout_weight="1"
-
             android:paddingTop="12dp"
             android:text="Sort By :" />
 
@@ -79,7 +78,11 @@
         android:background="#000000"
         android:text="@string/search_title"
         android:textColor="#ffffff"
+<<<<<<< HEAD
         android:onClick="search"
+=======
+        android:onClick="sortTitle"
+>>>>>>> 783265d7359cb01b21d64e6c65e504edf12dfa34
         />
 
     <Button
