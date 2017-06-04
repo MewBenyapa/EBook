@@ -23,8 +23,8 @@ public class BookJSONDecoder {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject bookJson = jsonArray.getJSONObject(i);
                 Book book = new Book(bookJson.getInt("id"), bookJson.getString("title"),
-                        bookJson.getDouble("price"), bookJson.getString("pub_year"));
-                book.setImgURL(bookJson.getString("img_url"));
+                        bookJson.getDouble("price"), bookJson.getString("pub_year"),
+                bookJson.getString("img_url"));
                 if (book != null)
                     results.add(book);
             }

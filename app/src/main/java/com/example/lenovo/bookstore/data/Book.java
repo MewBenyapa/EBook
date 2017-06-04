@@ -1,5 +1,9 @@
 package com.example.lenovo.bookstore.data;
 
+import android.util.Log;
+
+import java.io.Console;
+
 /**
  * Created by lenovo on 6/1/2017.
  */
@@ -9,12 +13,12 @@ public class Book {
     private double price;
     private String title, imgURL, year;
 
-    public Book(int id, String title, double price, String year) {
+    public Book(int id, String title, double price, String year,String img_url) {
         this.id = id;
         this.title = title;
         this.price = price;
         this.year = year;
-        this.imgURL = null;
+        this.imgURL = img_url;
     }
 
     public String toString() {
@@ -38,10 +42,10 @@ public class Book {
     }
 
     public String getImgURL() {
+        Log.d("TMG","chech img url");
         return imgURL;
+
     }
 
-    public void setImgURL(String imgURL) {
-        this.imgURL = imgURL;
-    }
+
 }
