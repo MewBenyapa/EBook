@@ -18,6 +18,7 @@ import com.example.lenovo.bookstore.data.Book;
 import com.example.lenovo.bookstore.data.BookDetail;
 import com.example.lenovo.bookstore.data.BookRepository;
 import com.example.lenovo.bookstore.data.RemoteBookRepository;
+import com.example.lenovo.bookstore.data.User;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     ArrayAdapter<Book> adapter;
     private BookDetail book ;
     private GridView bookListView;
+
+    public static ArrayList<Book> myCart = new ArrayList<Book>();
+
+    public static User user = new User();
 
     EditText text;
 
