@@ -1,5 +1,7 @@
 package com.example.lenovo.bookstore.list;
 
+import android.util.Log;
+
 import com.example.lenovo.bookstore.data.Book;
 import com.example.lenovo.bookstore.data.BookRepository;
 
@@ -26,6 +28,7 @@ public class BookListPresenter implements Observer {
     public void initialize() {
         repository.addObserver(this);
         repository.fetchAllBooks();
+        Log.d("INGRID", "initialize: grid");
     }
 
     @Override

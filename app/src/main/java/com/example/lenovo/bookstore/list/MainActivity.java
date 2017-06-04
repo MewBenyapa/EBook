@@ -44,10 +44,6 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         BookRepository repository = RemoteBookRepository.getInstance();
 
         bookListView = (GridView) findViewById(R.id.book_grid);
-        adapter = createAdapter(new ArrayList<Book>());
-        book = new BookDetail(new ArrayList<Book>(),MainActivity.this);
-        bookListView.setAdapter(book);
-
 
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
@@ -55,9 +51,10 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         sortTitle = (Button) findViewById(R.id.title);
         sortYear = (Button) findViewById(R.id.publish);
         radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
-
         search();
+
     }
+
 
     private ArrayAdapter<Book> createAdapter(ArrayList<Book> books) {
         return new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, books);
@@ -79,7 +76,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         text = (EditText) findViewById(R.id.search);
         text.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
