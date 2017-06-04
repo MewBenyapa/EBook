@@ -1,5 +1,6 @@
 package com.example.lenovo.bookstore.list;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     EditText text;
 
-    Button sortTitle, sortYear;
+    Button sortTitle, sortYear, cart;
 
     RadioGroup radioGroup;
 
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         sortTitle = (Button) findViewById(R.id.title);
         sortYear = (Button) findViewById(R.id.publish);
         radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
+
+        // cart = (Button) findViewById(R.id.)
 
         search();
     }
@@ -110,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         updateBook(books);
     }
 
-    public void sortByTitle(View view) {
+    public void sortByTitle() {
         final Collator collator = Collator.getInstance();
         adapter.sort(new Comparator<Book>() {
             @Override
@@ -120,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         });
     }
 
-    public void sortByYear(View view) {
+    public void sortByYear() {
         final Collator collator = Collator.getInstance();
         adapter.sort(new Comparator<Book>() {
             @Override
@@ -132,8 +135,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     public void radioSortTitle(View view) {
         if (((RadioButton) view).isChecked()) {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-            sortByTitle(view);
+            Toast.makeText(this, "Title", Toast.LENGTH_SHORT).show();
+            sortByTitle();
         } else {
             searchText(text.getText().toString());
         }
@@ -141,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     public void radioSortYear(View view) {
         if (((RadioButton) view).isChecked()) {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-            sortByYear(view);
+            Toast.makeText(this, "Publication Years", Toast.LENGTH_SHORT).show();
+            sortByYear();
         } else {
             searchText(text.getText().toString());
         }
