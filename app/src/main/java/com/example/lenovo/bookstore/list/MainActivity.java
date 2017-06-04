@@ -34,17 +34,12 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     ArrayAdapter<Book> adapter;
     private BookDetail book;
     private GridView bookListView;
-    private ImageView img;
 
     public static ArrayList<Book> myCart = new ArrayList<Book>();
 
     public static User user = new User();
 
     EditText text;
-
-    Button sortTitle, sortYear, cart_info, user_info;
-
-    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
-
-        // cart = (Button) findViewById(R.id.)
 
         bookListView.setOnItemClickListener(onItemClickListener);
         search();
@@ -100,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getApplicationContext(),
-                                        "", Toast.LENGTH_SHORT)
+                                        "Cancel", Toast.LENGTH_SHORT)
                                         .show();
                                 dialog.cancel();
                             }
@@ -136,17 +129,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     public void searchTextTitle(String text) {
         ArrayList<Book> books = new ArrayList<Book>();
         for (Book book : presenter.books) {
-            if (book.getTitle().toLowerCase().contains(text.toLowerCase())) {
-                books.add(book);
-            }
-        }
-        updateBook(books);
-    }
-
-    public void searchTextYear(String year) {
-        ArrayList<Book> books = new ArrayList<Book>();
-        for (Book book : presenter.books) {
-            if (book.getYear().contains(year)) {
+            if ((book.getTitle().toLowerCase().contains(text.toLowerCase())) || book.getYear().contains(text)) {
                 books.add(book);
             }
         }
