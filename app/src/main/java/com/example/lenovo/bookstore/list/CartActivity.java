@@ -52,9 +52,9 @@ public class CartActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(
                         CartActivity.this);
 
-                builder.setTitle("Confirm Add to CartActivity...");
+                builder.setTitle("Confirm Buying...");
 
-                builder.setMessage("Are you sure you want add this book?");
+                builder.setMessage("Are you sure you want buy all in your cart?");
 
                 builder.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {

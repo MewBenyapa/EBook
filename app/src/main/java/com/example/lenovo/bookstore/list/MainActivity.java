@@ -1,15 +1,18 @@
 package com.example.lenovo.bookstore.list;
 
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -21,9 +24,7 @@ import com.example.lenovo.bookstore.data.BookRepository;
 import com.example.lenovo.bookstore.data.RemoteBookRepository;
 import com.example.lenovo.bookstore.data.User;
 
-import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     ArrayAdapter<Book> adapter;
     private BookDetail book;
     private GridView bookListView;
+    private ImageView img;
 
     public static ArrayList<Book> myCart = new ArrayList<Book>();
 
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
         // cart = (Button) findViewById(R.id.)
 
-
+        bookListView.setOnItemClickListener(onItemClickListener);
         search();
 
     }
@@ -73,6 +75,41 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         bookListView.setAdapter(book);
     }
 
+
+        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        MainActivity.this);
+
+                builder.setTitle("Confirm Add to Cart...");
+
+                builder.setMessage("Are you sure you want to this book in your cart?");
+
+                builder.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Complete", Toast.LENGTH_SHORT)
+                                        .show();
+                                myCart.add((Book) bookListView.getItemAtPosition(which));
+                            }
+                        });
+                builder.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(),
+                                        "", Toast.LENGTH_SHORT)
+                                        .show();
+                                dialog.cancel();
+                            }
+                        });
+
+                builder.show();
+            }
+        };
+
     public void search() {
 
         text = (EditText) findViewById(R.id.search);
@@ -84,11 +121,10 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                System.out.println("123");
                 if(s == null) {
                     presenter.initialize();
                 } else {
-                    searchText(s.toString());
+                    searchTextTitle(s.toString());
                 }
             }
 
@@ -97,10 +133,20 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         });
     }
 
-    public void searchText(String text) {
+    public void searchTextTitle(String text) {
         ArrayList<Book> books = new ArrayList<Book>();
         for (Book book : presenter.books) {
             if (book.getTitle().toLowerCase().contains(text.toLowerCase())) {
+                books.add(book);
+            }
+        }
+        updateBook(books);
+    }
+
+    public void searchTextYear(String year) {
+        ArrayList<Book> books = new ArrayList<Book>();
+        for (Book book : presenter.books) {
+            if (book.getYear().contains(year)) {
                 books.add(book);
             }
         }
@@ -136,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
             Toast.makeText(this, "Title", Toast.LENGTH_SHORT).show();
             sortByTitle();
         } else {
-            searchText(text.getText().toString());
+            searchTextTitle(text.getText().toString());
         }
     }
 
@@ -145,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
             Toast.makeText(this, "Publication Years", Toast.LENGTH_SHORT).show();
             sortByYear();
         } else {
-            searchText(text.getText().toString());
+            searchTextTitle(text.getText().toString());
         }
     }
 

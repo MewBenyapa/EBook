@@ -41,11 +41,7 @@ public class Book {
         return year;
     }
 
-    public String getImgURL() {
-        Log.d("TMG","chech img url");
-        return imgURL;
-
-    }
+    public String getImgURL() { return imgURL; }
 
 
 }
