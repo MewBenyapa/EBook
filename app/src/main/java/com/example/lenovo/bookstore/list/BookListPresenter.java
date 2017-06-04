@@ -23,19 +23,20 @@ public class BookListPresenter implements Observer {
     public BookListPresenter(BookRepository repo, BookListView view) {
         this.repository = repo;
         this.view = view;
+        books = new ArrayList<>();
     }
 
     public void initialize() {
         repository.addObserver(this);
         repository.fetchAllBooks();
-        Log.d("INGRID", "initialize: grid");
     }
 
     @Override
     public void update(Observable o, Object arg) {
         if(o == repository) {
             books = new ArrayList<Book>(repository.getAllBook());
-            view.setBookList(books);
+            view.updateBook(books);
+            view.sortByTitle();
         }
     }
 }

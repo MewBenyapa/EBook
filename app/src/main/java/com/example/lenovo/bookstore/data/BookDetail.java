@@ -89,7 +89,7 @@ public class BookDetail extends BaseAdapter implements BookItem{
 
     @Override
     public void setBookPub(int local) {
-        pubYear.setText(bookContent.get(local).getTitle());
+        pubYear.setText(bookContent.get(local).getYear());
 
     }
 }

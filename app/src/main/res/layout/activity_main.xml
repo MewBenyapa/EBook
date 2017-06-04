@@ -48,6 +48,7 @@
             android:layout_weight="1"
             android:buttonTint="#000000"
             android:onClick="radioSortTitle"
+            android:focusable="false"
             android:text="@string/radio_title" />
 
         <RadioButton
@@ -57,6 +58,7 @@
             android:layout_weight="1"
             android:buttonTint="#000000"
             android:onClick="radioSortYear"
+            android:focusable="false"
             android:text="@string/radio_pub" />
 
     </RadioGroup>
@@ -73,8 +75,6 @@
         android:hint="@string/placeholder"
         android:textColorHint="#c0c0c0c0"
         />
-
-
 
 
     <!--<ListView-->

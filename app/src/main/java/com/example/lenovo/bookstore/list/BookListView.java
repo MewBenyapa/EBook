@@ -9,5 +9,6 @@ import java.util.ArrayList;
  */
 
 public interface BookListView {
-    void setBookList(ArrayList<Book> books);
+    public void updateBook(ArrayList<Book> books);
+    public void sortByTitle();
 }

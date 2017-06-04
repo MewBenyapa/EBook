@@ -23,13 +23,15 @@ import com.example.lenovo.bookstore.data.User;
 
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity implements BookListView {
 
     BookListPresenter presenter;
     ArrayAdapter<Book> adapter;
-    private BookDetail book ;
+    private BookDetail book;
     private GridView bookListView;
 
     public static ArrayList<Book> myCart = new ArrayList<Book>();
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     EditText text;
 
-    Button sortTitle, sortYear, cart;
+    Button sortTitle, sortYear, cart_info, user_info;
 
     RadioGroup radioGroup;
 
@@ -54,15 +56,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
-        sortTitle = (Button) findViewById(R.id.title);
-        sortYear = (Button) findViewById(R.id.publish);
-        radioGroup = (RadioGroup) findViewById(R.id.sort_radioGroup);
-<<<<<<< HEAD
-
         // cart = (Button) findViewById(R.id.)
 
-=======
->>>>>>> 99394de75cdd86a40111df873379ae3eb6e9a3b3
+
         search();
 
     }
@@ -70,12 +66,6 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     private ArrayAdapter<Book> createAdapter(ArrayList<Book> books) {
         return new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, books);
-    }
-
-    @Override
-    public void setBookList(ArrayList<Book> books) {
-        book = new BookDetail(new ArrayList<Book>(),MainActivity.this);
-        bookListView.setAdapter(book);
     }
 
     public void updateBook(ArrayList<Book> books) {
@@ -94,7 +84,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.toString().equals("")) {
+                System.out.println("123");
+                if(s == null) {
                     presenter.initialize();
                 } else {
                     searchText(s.toString());
@@ -117,23 +108,27 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     }
 
     public void sortByTitle() {
-        final Collator collator = Collator.getInstance();
-        adapter.sort(new Comparator<Book>() {
+        ArrayList<Book> books = new ArrayList<>();
+        books.addAll(presenter.books);
+        Collections.sort(books, new Comparator<Book>() {
             @Override
             public int compare(Book o1, Book o2) {
-                return collator.compare(o1.getTitle(), o2.getTitle());
+                return o1.getTitle().toLowerCase().compareTo(o2.getTitle().toLowerCase());
             }
         });
+        updateBook(books);
     }
 
     public void sortByYear() {
-        final Collator collator = Collator.getInstance();
-        adapter.sort(new Comparator<Book>() {
+        ArrayList<Book> books = new ArrayList<>();
+        books.addAll(presenter.books);
+        Collections.sort(books, new Comparator<Book>() {
             @Override
             public int compare(Book o1, Book o2) {
-                return collator.compare(o1.getYear(), o2.getYear());
+                return Integer.parseInt(o1.getYear()) < Integer.parseInt(o2.getYear())? 1 : 0;
             }
         });
+        updateBook(books);
     }
 
     public void radioSortTitle(View view) {
