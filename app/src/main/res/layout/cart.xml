@@ -23,13 +23,72 @@
     <ListView
         android:id="@+id/cart_list"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:layout_below="@+id/header"
-        android:layout_marginBottom="10dp"
         android:background="#c0c0c0"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
          />
+
+    <TextView
+        android:id="@+id/total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Price :  "
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/cart_list"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+
+        />
+
+    <TextView
+        android:id="@+id/num_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/total_price"
+        android:layout_below="@+id/cart_list"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+
+        />
+    <TextView
+        android:id="@+id/current_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Balance :  "
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/total_price"
+
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+
+        />
+
+    <TextView
+        android:id="@+id/num_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/current_balance"
+        android:layout_below="@+id/num_total_price"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+
+        />
 
     <Button
         android:id="@+id/purchase"
@@ -41,7 +100,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#ffffff"
-        android:layout_below="@+id/cart_list"
+       android:layout_below="@+id/current_balance"
         android:layout_alignStart="@+id/header"
         android:layout_alignEnd="@+id/header"/>
 
