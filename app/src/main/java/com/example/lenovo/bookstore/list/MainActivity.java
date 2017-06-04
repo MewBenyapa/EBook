@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.lenovo.bookstore.R;
 import com.example.lenovo.bookstore.data.Book;
+import com.example.lenovo.bookstore.data.BookDetail;
 import com.example.lenovo.bookstore.data.BookRepository;
 import com.example.lenovo.bookstore.data.RemoteBookRepository;
 import com.example.lenovo.bookstore.data.User;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     BookListPresenter presenter;
     ArrayAdapter<Book> adapter;
+    private BookDetail book ;
     private GridView bookListView;
 
     public static ArrayList<Book> myCart = new ArrayList<Book>();
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
         bookListView = (GridView) findViewById(R.id.book_grid);
         adapter = createAdapter(new ArrayList<Book>());
-        bookListView.setAdapter(adapter);
+        book = new BookDetail(new ArrayList<Book>(),MainActivity.this);
+        bookListView.setAdapter(book);
+
 
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
@@ -66,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     @Override
     public void setBookList(ArrayList<Book> books) {
-        adapter = createAdapter(books);
-        bookListView.setAdapter(adapter);
+        book = new BookDetail(new ArrayList<Book>(),MainActivity.this);
+        bookListView.setAdapter(book);
     }
 
     public void updateBook(ArrayList<Book> books) {
-        adapter = createAdapter(books);
-        bookListView.setAdapter(adapter);
+        book = new BookDetail(books,MainActivity.this);
+        bookListView.setAdapter(book);
     }
 
     public void search() {
@@ -143,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
             searchText(text.getText().toString());
         }
     }
+
+
 
 //    public void getAllBooks(View view) {
 //        presenter.initialize();
