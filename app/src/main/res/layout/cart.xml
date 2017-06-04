@@ -127,6 +127,7 @@
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:layout_below="@+id/cart_list"
+        android:onClick="addBalance"
         android:layout_toEndOf="@+id/add_balance"
         />
 

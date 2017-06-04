@@ -4,9 +4,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +31,11 @@ public class CartActivity extends AppCompatActivity {
     double total;
 
     private TextView currentBalance;
+    double totalBalance = 0;
 
     User user = new User();
 
+    EditText fund;
     Button purchase;
     ListView cartListView;
 
@@ -48,6 +52,8 @@ public class CartActivity extends AppCompatActivity {
         cartListView = (ListView) findViewById(R.id.cart_list);
         BookDetail cartAdapt = new BookDetail(myCart, CartActivity.this);
         cartListView.setAdapter(cartAdapt);
+
+        fund = (EditText) findViewById(R.id.add_balance);
 
         TotalPrice();
     }
@@ -69,7 +75,7 @@ public class CartActivity extends AppCompatActivity {
                 builder.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                if(total > user.getBalance()) {
+                                if(total > totalBalance) {
                                     Toast.makeText(getApplicationContext(),
                                             "You have not enough money!", Toast.LENGTH_SHORT)
                                             .show();
@@ -77,7 +83,7 @@ public class CartActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),
                                             "Complete!", Toast.LENGTH_SHORT)
                                             .show();
-                                    user.setBalance(user.getBalance() - total);
+                                    currentBalance.setText("" + (totalBalance - total));
                                     for(Book b : myCart) {
                                         user.addBook(b);
                                     }
@@ -105,5 +111,12 @@ public class CartActivity extends AppCompatActivity {
             total += book.getPrice();
         }
         return total;
+    }
+
+    public void addBalance(View view) {
+        String fundStr = fund.getText().toString();
+        double newFund = Double.parseDouble(fundStr);
+        totalBalance += user.getBalance() + newFund;
+        currentBalance.setText("" + totalBalance);
     }
 }
