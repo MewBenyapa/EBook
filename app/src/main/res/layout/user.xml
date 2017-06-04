@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Cerrent Balance : "
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:id="@+id/num_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/balance"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="1000"
+        android:textColor="#FF9933"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+        android:textSize="30dp"
+        />
+
+    <TextView
+        android:id="@+id/st_add_balance"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/balance"
+        android:text="Add Balance : "
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+        android:textSize="20dp"
+        />
+
+    <EditText
+        android:id="@+id/edit_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/st_add_balance"
+        android:layout_below="@+id/balance"
+        android:ems="10"
+        android:background="#c0c0c0"
+        android:inputType="textPersonName"
+        android:textColorHint="#ffffff"
+        android:hint="  Enter balance here...." />
+
+    <Button
+        android:id="@+id/add_balance_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/st_add_balance"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="#000000"
+        android:text="Add Balance"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/st_list"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_balance_button"
+        android:text="Your book list : "
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
+        android:textSize="20dp"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignEnd="@+id/add_balance_button"
+        android:layout_alignTop="@+id/st_list"
+        android:layout_alignStart="@+id/edit_balance"
+        android:layout_marginBottom="30dp"
+        android:background="#c0c0c0"/>
+
+
+</RelativeLayout>
