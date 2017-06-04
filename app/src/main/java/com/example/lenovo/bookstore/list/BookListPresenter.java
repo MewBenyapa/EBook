@@ -1,9 +1,7 @@
 package com.example.lenovo.bookstore.list;
 
-import android.util.Log;
-
-import com.example.lenovo.bookstore.data.Book;
-import com.example.lenovo.bookstore.data.BookRepository;
+import com.example.lenovo.bookstore.data.book.Book;
+import com.example.lenovo.bookstore.data.book.BookRepository;
 
 import java.util.ArrayList;
 import java.util.Observable;

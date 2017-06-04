@@ -6,18 +6,19 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.bookstore.R;
-import com.example.lenovo.bookstore.data.Book;
+import com.example.lenovo.bookstore.data.User;
+import com.example.lenovo.bookstore.data.book.Book;
+import com.example.lenovo.bookstore.data.book.BookDetail;
 
 import java.util.ArrayList;
 
-import static com.example.lenovo.bookstore.list.MainActivity.user;
+import static com.example.lenovo.bookstore.list.MainActivity.myCart;
 
 /**
  * Created by lenovo on 6/4/2017.
@@ -25,24 +26,33 @@ import static com.example.lenovo.bookstore.list.MainActivity.user;
 
 public class CartActivity extends AppCompatActivity {
     private TextView totalPriceText;
+    double total;
+
+    private TextView currentBalance;
+
+    User user = new User();
 
     Button purchase;
     ListView cartListView;
-
-    ArrayAdapter<Book> adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart);
 
-        cartListView = (ListView) findViewById(R.id.cart_list);
-        adapter = new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, MainActivity.myCart);
-        cartListView.setAdapter(adapter);
+        totalPriceText = (TextView) findViewById(R.id.num_total_price);
+        totalPriceText.setText("" + setTotalPrice(MainActivity.myCart));
 
-        getTotalPrice();
+        currentBalance = (TextView) findViewById(R.id.num_balance);
+        currentBalance.setText("" + user.getBalance());
+
+        cartListView = (ListView) findViewById(R.id.cart_list);
+        BookDetail cartAdapt = new BookDetail(myCart, CartActivity.this);
+        cartListView.setAdapter(cartAdapt);
+
+        TotalPrice();
     }
 
-    public void getTotalPrice() {
+    public void TotalPrice() {
 
         purchase = (Button) findViewById(R.id.purchase);
         purchase.setOnClickListener(new AdapterView.OnClickListener() {
@@ -59,7 +69,7 @@ public class CartActivity extends AppCompatActivity {
                 builder.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                if(user.getTotalPrice() > user.getMoney()) {
+                                if(total > user.getBalance()) {
                                     Toast.makeText(getApplicationContext(),
                                             "You have not enough money!", Toast.LENGTH_SHORT)
                                             .show();
@@ -67,7 +77,10 @@ public class CartActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),
                                             "Complete!", Toast.LENGTH_SHORT)
                                             .show();
-                                    user.setMoney(user.getMoney() - user.getTotalPrice());
+                                    user.setBalance(user.getBalance() - total);
+                                    for(Book b : myCart) {
+                                        user.addBook(b);
+                                    }
                                     user.clearCart();
                                 }
                             }
@@ -85,5 +98,12 @@ public class CartActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+    }
+
+    public double setTotalPrice(ArrayList<Book> cartList) {
+        for (Book book : cartList) {
+            total += book.getPrice();
+        }
+        return total;
     }
 }

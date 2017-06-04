@@ -1,5 +1,7 @@
 package com.example.lenovo.bookstore.data;
 
+import com.example.lenovo.bookstore.data.book.Book;
+
 import java.util.ArrayList;
 
 /**
@@ -7,31 +9,27 @@ import java.util.ArrayList;
  */
 
 public class User {
-    private double money;
+    private double balance;
     private ArrayList<Book> cart;
     private ArrayList<Book> myBookList;
 
     public User() {
-        this.money = 0;
+        this.balance = 0;
         cart = new ArrayList<Book>();
         myBookList = new ArrayList<Book>();
     }
 
-    public double getMoney() {
-        return money;
-    }
+    public double getBalance() { return balance; }
 
-    public void setMoney(double money) {
-        this.money = money;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public ArrayList<Book> getCart() {
         return cart;
     }
 
-    public void setCart(ArrayList<Book> cart) {
-        this.cart = cart;
-    }
+    public void setCart(ArrayList<Book> cart) { this.cart = cart; }
 
     public ArrayList<Book> getMyBookList() {
         return myBookList;
@@ -49,10 +47,9 @@ public class User {
         return price;
     }
 
-
     public boolean clearCart() {
-        if(money >= getTotalPrice()) {
-            money -= getTotalPrice();
+        if(balance >= getTotalPrice()) {
+            balance -= getTotalPrice();
             myBookList.addAll(cart);
             cart.clear();
             return true;

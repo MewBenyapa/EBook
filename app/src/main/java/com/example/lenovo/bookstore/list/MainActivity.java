@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -12,22 +11,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.view.Menu;
-import android.view.MenuItem;
 import com.example.lenovo.bookstore.R;
-import com.example.lenovo.bookstore.data.Book;
-import com.example.lenovo.bookstore.data.BookDetail;
-import com.example.lenovo.bookstore.data.BookRepository;
+import com.example.lenovo.bookstore.data.book.Book;
+import com.example.lenovo.bookstore.data.book.BookDetail;
+import com.example.lenovo.bookstore.data.book.BookRepository;
 import com.example.lenovo.bookstore.data.RemoteBookRepository;
-import com.example.lenovo.bookstore.data.User;
+
 import android.content.Intent;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,15 +31,11 @@ import java.util.Comparator;
 public class MainActivity extends AppCompatActivity implements BookListView {
 
     BookListPresenter presenter;
-    ArrayAdapter<Book> adapter;
-    private BookDetail book;
+    public static BookDetail book;
+
     private GridView bookListView;
 
-    private MenuItem itemCart;
-
     public static ArrayList<Book> myCart = new ArrayList<Book>();
-
-    public static User user = new User();
 
     EditText text;
 
@@ -58,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         BookRepository repository = RemoteBookRepository.getInstance();
 
         bookListView = (GridView) findViewById(R.id.book_grid);
-
         presenter = new BookListPresenter(repository, this);
         presenter.initialize();
 
@@ -67,13 +57,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     }
 
-
-    private ArrayAdapter<Book> createAdapter(ArrayList<Book> books) {
-        return new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, books);
-    }
-
     public void updateBook(ArrayList<Book> books) {
-        book = new BookDetail(books,MainActivity.this);
+        book = new BookDetail(books, MainActivity.this);
         bookListView.setAdapter(book);
     }
 
@@ -81,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(
                         MainActivity.this);
 
@@ -95,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
                                 Toast.makeText(getApplicationContext(),
                                         "Complete", Toast.LENGTH_SHORT)
                                         .show();
-                                myCart.add((Book) bookListView.getItemAtPosition(which));
+                                myCart.add((Book) bookListView.getItemAtPosition(position));
                             }
                         });
                 builder.setNegativeButton("NO",
@@ -187,63 +172,24 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         }
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_bar, menu);
-
-//        MenuItem cart1 = menu.findItem(R.id.cart_menu);
-//        cart1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                Intent cartIntent = new Intent(MainActivity.this, CartActivity.class);
-//                startActivity(cartIntent);
-//                return true;
-//            }
-//        });
-//
-//        MenuItem cart2 = menu.findItem(R.id.cart_menu2);
-//        cart2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
-//                startActivity(userIntent);
-//                return true;
-//            }
-//        });
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d("Cart", "Show my cart");
         switch(item.getItemId()) {
             case R.id.cart_menu:
                 Intent cartIntent = new Intent(this, CartActivity.class);
-                Log.d("Cart", "Show my cart");
                 this.startActivity(cartIntent);
-                break;
-            case R.id.cart_menu2:
-                Intent userIntent = new Intent(this, UserActivity.class);
-                this.startActivity(userIntent);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
         return true;
     }
-
-//    public void enterCart(MenuItem item) {
-//        Intent in = new Intent(getApplicationContext(), CartActivity.class);
-//        startActivity(in);
-//    }
-
-
-//    public void getAllBooks(View view) {
-//        presenter.initialize();
-//    }
-
 
 }

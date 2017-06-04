@@ -23,7 +23,7 @@
     <ListView
         android:id="@+id/cart_list"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/header"
         android:background="#c0c0c0"
         android:layout_marginLeft="20dp"
@@ -38,7 +38,7 @@
         android:textSize="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/cart_list"
+        android:layout_below="@+id/add_balance"
         android:textColor="#000000"
         android:textStyle="bold"
         android:fontFamily="Arial"
@@ -49,11 +49,11 @@
         android:id="@+id/num_total_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100"
+        android:text="0"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/total_price"
-        android:layout_below="@+id/cart_list"
+        android:layout_below="@+id/add_balance"
         android:textColor="#000000"
         android:textStyle="bold"
         android:fontFamily="Arial"
@@ -79,7 +79,7 @@
         android:id="@+id/num_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100"
+        android:text="0"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/current_balance"
@@ -104,5 +104,30 @@
         android:layout_alignStart="@+id/header"
         android:layout_alignEnd="@+id/header"/>
 
+    <EditText
+        android:id="@+id/add_balance"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+
+        android:layout_below="@+id/cart_list" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        android:text="Add Balance"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/cart_list"
+        android:layout_toEndOf="@+id/add_balance"
+        />
 
 </RelativeLayout>

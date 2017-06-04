@@ -1,8 +1,9 @@
 package com.example.lenovo.bookstore.data;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
+import com.example.lenovo.bookstore.data.book.Book;
+import com.example.lenovo.bookstore.data.book.BookRepository;
 import com.example.lenovo.bookstore.data.decoder.BookJSONDecoder;
 import com.example.lenovo.bookstore.utils.UrlFetcher;
 

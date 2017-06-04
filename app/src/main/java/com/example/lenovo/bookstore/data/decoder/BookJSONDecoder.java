@@ -1,8 +1,6 @@
 package com.example.lenovo.bookstore.data.decoder;
 
-import android.util.Log;
-
-import com.example.lenovo.bookstore.data.Book;
+import com.example.lenovo.bookstore.data.book.Book;
 
 import org.json.JSONArray;
 import org.json.JSONException;

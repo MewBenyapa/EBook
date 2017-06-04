@@ -1,4 +1,4 @@
-package com.example.lenovo.bookstore.data;
+package com.example.lenovo.bookstore.data.book;
 
 import android.content.Context;
 import android.view.LayoutInflater;

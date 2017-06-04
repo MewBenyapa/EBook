@@ -1,4 +1,4 @@
-package com.example.lenovo.bookstore.data;
+package com.example.lenovo.bookstore.data.book;
 
 /**
  * Created by thanawan on 6/4/2017 AD.

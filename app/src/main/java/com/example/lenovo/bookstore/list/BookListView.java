@@ -1,6 +1,6 @@
 package com.example.lenovo.bookstore.list;
 
-import com.example.lenovo.bookstore.data.Book;
+import com.example.lenovo.bookstore.data.book.Book;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 
 public interface BookListView {
-    public void updateBook(ArrayList<Book> books);
-    public void sortByTitle();
+    void updateBook(ArrayList<Book> books);
+    void sortByTitle();
 }
