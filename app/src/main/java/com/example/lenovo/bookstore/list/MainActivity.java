@@ -4,8 +4,10 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,11 +39,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     ArrayAdapter<Book> adapter;
     private BookDetail book;
     private GridView bookListView;
-<<<<<<< HEAD
-=======
-    private ImageView img;
-    private MenuItem itemCart ;
->>>>>>> 83488d1612731aced521c6cc992bc285c201918c
+
+    private MenuItem itemCart;
 
     public static ArrayList<Book> myCart = new ArrayList<Book>();
 
@@ -49,16 +48,8 @@ public class MainActivity extends AppCompatActivity implements BookListView {
 
     EditText text;
 
-<<<<<<< HEAD
-=======
-    Button sortTitle, sortYear, cart_info, user_info;
+    public MainActivity() {}
 
-    RadioGroup radioGroup;
-
-    public MainActivity() {
-    }
-
->>>>>>> 83488d1612731aced521c6cc992bc285c201918c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,17 +187,58 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         }
     }
 
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater =getMenuInflater();
-        inflater.inflate(R.menu.menu_bar,menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_bar, menu);
+
+//        MenuItem cart1 = menu.findItem(R.id.cart_menu);
+//        cart1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Intent cartIntent = new Intent(MainActivity.this, CartActivity.class);
+//                startActivity(cartIntent);
+//                return true;
+//            }
+//        });
+//
+//        MenuItem cart2 = menu.findItem(R.id.cart_menu2);
+//        cart2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
+//                startActivity(userIntent);
+//                return true;
+//            }
+//        });
         return true;
     }
 
-    public void enterCart(MenuItem item) {
-     Intent in = new Intent(getApplicationContext(),CartActivity.class);
-        startActivity(in);
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d("Cart", "Show my cart");
+        switch(item.getItemId()) {
+            case R.id.cart_menu:
+                Intent cartIntent = new Intent(this, CartActivity.class);
+                Log.d("Cart", "Show my cart");
+                this.startActivity(cartIntent);
+                break;
+            case R.id.cart_menu2:
+                Intent userIntent = new Intent(this, UserActivity.class);
+                this.startActivity(userIntent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
+
+//    public void enterCart(MenuItem item) {
+//        Intent in = new Intent(getApplicationContext(), CartActivity.class);
+//        startActivity(in);
+//    }
 
 
 //    public void getAllBooks(View view) {
