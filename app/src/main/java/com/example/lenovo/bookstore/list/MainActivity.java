@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,14 +18,15 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
+import android.view.Menu;
+import android.view.MenuItem;
 import com.example.lenovo.bookstore.R;
 import com.example.lenovo.bookstore.data.Book;
 import com.example.lenovo.bookstore.data.BookDetail;
 import com.example.lenovo.bookstore.data.BookRepository;
 import com.example.lenovo.bookstore.data.RemoteBookRepository;
 import com.example.lenovo.bookstore.data.User;
-
+import android.content.Intent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     private BookDetail book;
     private GridView bookListView;
     private ImageView img;
+    private MenuItem itemCart ;
 
     public static ArrayList<Book> myCart = new ArrayList<Book>();
 
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements BookListView {
     Button sortTitle, sortYear, cart_info, user_info;
 
     RadioGroup radioGroup;
+
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,6 +202,17 @@ public class MainActivity extends AppCompatActivity implements BookListView {
         }
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater =getMenuInflater();
+        inflater.inflate(R.menu.menu_bar,menu);
+        return true;
+    }
+
+    public void enterCart(MenuItem item) {
+     Intent in = new Intent(getApplicationContext(),CartActivity.class);
+        startActivity(in);
+
+    }
 
 
 //    public void getAllBooks(View view) {

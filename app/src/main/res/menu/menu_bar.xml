@@ -8,5 +8,7 @@
             android:id="@+id/cart_menu"
             android:icon="@drawable/cart"
             android:title="cart"
-            app:showAsAction="always"/>
+            app:showAsAction="always"
+            android:onClick="enterCart"
+            />
 </menu>
