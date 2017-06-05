@@ -30,7 +30,7 @@ public class CartActivity extends AppCompatActivity {
     double total;
 
     private TextView currentBalance;
-    double totalBalance = 0;
+    double totalBalance;
 
     User user = new User();
 
@@ -46,7 +46,7 @@ public class CartActivity extends AppCompatActivity {
         totalPriceText.setText("" + setTotalPrice(MainActivity.myCart));
 
         currentBalance = (TextView) findViewById(R.id.num_balance);
-        currentBalance.setText("" + user.getBalance());
+        currentBalance.setText("" + totalBalance);
 
         cartListView = (ListView) findViewById(R.id.cart_list);
         BookDetail cartAdapt = new BookDetail(myCart, CartActivity.this);
