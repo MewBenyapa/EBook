@@ -1,9 +1,10 @@
 # E-Book 
 
 ### Members
-Thanawan Sean-in          5810545891
-Benyapa  Suesattabongkot  5810545955
-
+```ini
+1. Thanawan Sean-in          5810545891
+2. Benyapa  Suesattabongkot  5810545955
+```
 ### Phase
-Finish phase 1, 2, and 3.
+Finish phase 1, 2, and 3. <br>
 Add pictures into application.
