@@ -39,22 +39,4 @@ public class User {
         cart.add(book);
     }
 
-    public double getTotalPrice() {
-        double price = 0;
-        for(Book book : cart) {
-            price += book.getPrice();
-        }
-        return price;
-    }
-
-    public boolean clearCart() {
-        if(balance >= getTotalPrice()) {
-            balance -= getTotalPrice();
-            myBookList.addAll(cart);
-            cart.clear();
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
