@@ -22,13 +22,13 @@
 
     <ListView
         android:id="@+id/cart_list"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="250dp"
-        android:layout_below="@+id/header"
         android:background="#c0c0c0"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-         />
+        android:layout_below="@+id/header"
+        android:layout_alignStart="@+id/header" />
 
     <TextView
         android:id="@+id/total_price"
@@ -110,6 +110,7 @@
         android:layout_height="40dp"
         android:ems="10"
         android:background="#c0c0c0"
+
         android:layout_marginLeft="40dp"
         android:inputType="textPersonName"
         android:layout_alignTop="@+id/add" />
@@ -126,7 +127,8 @@
         android:textColor="#ffffff"
         android:onClick="addBalance"
         android:layout_below="@+id/cart_list"
-        android:layout_alignEnd="@+id/cart_list"
-        android:layout_marginEnd="14dp" />
+        android:layout_toEndOf="@+id/add_balance"
+        android:layout_marginLeft="10dp"
+         />
 
 </RelativeLayout>
