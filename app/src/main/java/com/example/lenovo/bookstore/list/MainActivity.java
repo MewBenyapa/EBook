@@ -20,7 +20,6 @@ import com.example.lenovo.bookstore.data.book.Book;
 import com.example.lenovo.bookstore.data.book.BookDetail;
 import com.example.lenovo.bookstore.data.book.BookRepository;
 import com.example.lenovo.bookstore.data.RemoteBookRepository;
-
 import android.content.Intent;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -87,7 +86,7 @@ public class CartActivity extends AppCompatActivity {
                                     for(Book b : myCart) {
                                         user.addBook(b);
                                     }
-                                    user.clearCart();
+                                    myCart.clear();
                                 }
                             }
                         });
