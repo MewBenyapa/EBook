@@ -1,6 +1,7 @@
 package com.example.lenovo.bookstore.list;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -87,6 +88,10 @@ public class CartActivity extends AppCompatActivity {
                                         user.addBook(b);
                                     }
                                     myCart.clear();
+                                    Intent i=new Intent(
+                                            CartActivity.this,
+                                            MainActivity.class);
+                                    startActivity(i);
                                 }
                             }
                         });
